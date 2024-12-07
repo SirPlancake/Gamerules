@@ -38,15 +38,6 @@ public final class Main extends JavaPlugin {
                     GameRule<?> Rule =  getGameRule(RuleName);
                     if (Rule != null) {
                         Object Value = Config.get(RuleName + "." + Dimension);
-
-                        if (Value == null) {
-                            if (Rule.getType() == Boolean.class) {
-                                Value = getDefaultBooleanRule(RuleName);
-                            } else if (Rule.getType() == Integer.class) {
-                                Value = getDefaultIntegerRule(RuleName);
-                            }
-                        }
-
                         if (Value instanceof Boolean && Rule.getType() == Boolean.class) {
                             World.setGameRule((GameRule<Boolean>) Rule, (Boolean) Value);
                         } else if (Value instanceof Integer && Rule.getType() == Integer.class) {
@@ -84,21 +75,6 @@ public final class Main extends JavaPlugin {
             case NETHER -> "nether";
             case THE_END -> "end";
             default -> "unknown";
-        };
-    }
-
-    private Boolean getDefaultBooleanRule(String ruleName) {
-        return switch (ruleName) {
-            case "doMobSpawning", "doWeatherCycle", "doFireTick", "doDaylightCycle" -> true;
-            default -> false;
-        };
-    }
-
-    private Integer getDefaultIntegerRule(String ruleName) {
-        return switch (ruleName) {
-            case "spawnRadius" -> 10;
-            case "maxCommandChainLength" -> 65536;
-            default -> 0;
         };
     }
 }
