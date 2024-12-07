@@ -1,0 +1,7 @@
+name: Gamerules
+version: '1.0.0'
+main: dev.sirplancake.gamerules.Main
+api-version: '1.19'
+authors: [ SirPlancake ]
+description: A plugin to enable/disable gamerules in different dimensions.
+website: https://sirplancake.dev
